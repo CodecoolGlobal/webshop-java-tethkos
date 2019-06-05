@@ -71,7 +71,26 @@
 
 <div class="container">
     <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
+    <div >
+        <form method="post">
+        <select name="category-selector" >
+
+            <option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.getId()}" >Category</option>
+        </select>
+                <select name="supplier-selector" >
+                    <option th:each="supplier : ${suppliers}" th:text="${supplier.name}" th:value="${supplier.getId()}">Supplier</option>
+                </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <table>
+        <thead id="title-table">
+        <th th:text="${categoryName.getName()}" style="font-weight: bolder">Category Title</th>
+        <th id="title-space">   -   </th>
+        <th th:text="${supplierName.getName()}" >Supplier</th>
+        </thead>
+    </table>
+
     </div>
 
     <div id="products" class="row">
