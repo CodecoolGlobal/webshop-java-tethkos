@@ -59,10 +59,9 @@ public class CartDaoMem implements CartDao {
             for (Product key : cartData.keySet()) {
                 totalOfAll =+ getProductTotal(key);
             }
+
         return totalOfAll;
     }
 
-
-    }
 
 
