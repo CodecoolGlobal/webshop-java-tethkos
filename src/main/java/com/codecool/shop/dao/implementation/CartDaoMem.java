@@ -46,6 +46,23 @@ public class CartDaoMem implements CartDao {
         } else {
             cartData.put(product, 1);
         }
+
+    @Override
+    public Double getProductTotal(Product product) {
+        Double productTotal = Double.parseDouble(product.getPrice()) * cartData.get(product);
+        return productTotal;
     }
 
-}
+    @Override
+    public Double getTotalOfAll() {
+            Double totalOfAll = null;
+            for (Product key : cartData.keySet()) {
+                totalOfAll =+ getProductTotal(key);
+            }
+        return totalOfAll;
+    }
+
+
+    }
+
+
