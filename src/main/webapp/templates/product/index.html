@@ -71,8 +71,9 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <form action="/addToCart" method="post" th:value="${prod}">
-                            <button class="btn">Add to cart</button>
+                        <form action="/addToCart" method="post">
+                            <input type="hidden" name="productId"  th:value="${prod.getId()}">
+                            <button class="btn" type="submit" >Add to cart</button>
                         </form>
                     </div>
                 </div>

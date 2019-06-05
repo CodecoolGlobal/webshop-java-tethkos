@@ -37,6 +37,7 @@ public class CartDaoMem implements CartDao {
             else {
                 cartData.put(product, 1);
             }
+            System.out.println(getAll());
         }
 
 
