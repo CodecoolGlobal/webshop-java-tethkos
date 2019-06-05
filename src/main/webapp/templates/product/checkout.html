@@ -54,90 +54,104 @@
             </div>
         </div>
         <div class="col-75">
-            <form action="/action_page.php">
+            <form action="/confirmation" method="post">
                 <div class="row">
                     <div class="col-50">
-                        <h3>Billing Details</h3>
-                        <label for="name"><i class="fa fa-user"></i> Full Name</label>
-                        <input type="text" id="name" name="name" placeholder="Bank Aranka">
-                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                        <input type="text" id="email" name="email" placeholder="bankaranka@gmail.com">
-                        <label for="phoneNumber"><i class="fa fa-address-card-o"></i> Phone number</label>
-                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="0620-123 4567">
-                        <div class="row">
-                            <div class="col-50">
+                        <h3 id="toggleDetails">Billing Details</h3>
+                        <div id="detailsHideFom">
+                            <label for="name"><i class="fa fa-user"></i> Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Bank Aranka">
+                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                            <input type="text" id="email" name="email" placeholder="bankaranka@gmail.com">
+                            <label for="phoneNumber"><i class="fa fa-address-card-o"></i> Phone number</label>
+                            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="0620-123 4567">
+                            <div class="row">
+                                <div class="col-50">
 
-                                <span>Shipping address</span>
-                                <label for="shippingCity"><i class="fa fa-institution"></i> City</label>
-                                <input type="text" id="shippingCity" name="city" placeholder="Budapest">
-                                <label for="shippingAddress"><i class="fa fa-address-card-o"></i>
-                                    Address</label>
-                                <input type="text" id="shippingAddress" name="shippingAddress"
-                                       placeholder="542 W. 15th Street">
-                                <label for="shippingCountry"><i class="fa fa-institution"></i> Country</label>
-                                <input type="text" id="shippingCountry" name="shippingCountry" placeholder="Hungary">
-                                <label for="shippingZip">Zip</label>
-                                <input type="text" id="shippingZip" name="shippingZip" placeholder="1045">
-                                <label>
-                                    <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as
-                                    billing
-                                </label>
-                            </div>
-                            <div class="col-50">
-                                <span>Billing address</span>
-                                <label for="billingCity"><i class="fa fa-institution"></i> City</label>
-                                <input type="text" id="billingCity" name="city" placeholder="Budapest">
-                                <label for="billingAddress"><i class="fa fa-address-card-o"></i> Address</label>
-                                <input type="text" id="billingAddress" name="billingAddress"
-                                       placeholder="542 W. 15th Street">
-                                <label for="billingCountry"><i class="fa fa-institution"></i> Country</label>
-                                <input type="text" id="billingCountry" name="billingCity" placeholder="Hungary">
-                                <label for="billingZip">Zip</label>
-                                <input type="text" id="billingZip" name="billingZip" placeholder="1045">
+                                    <span>Shipping address</span>
+                                    <label for="shippingCity"><i class="fa fa-institution"></i> City</label>
+                                    <input type="text" id="shippingCity" name="city" placeholder="Budapest">
+                                    <label for="shippingAddress"><i class="fa fa-address-card-o"></i>
+                                        Address</label>
+                                    <input type="text" id="shippingAddress" name="shippingAddress"
+                                           placeholder="542 W. 15th Street">
+                                    <label for="shippingCountry"><i class="fa fa-institution"></i> Country</label>
+                                    <input type="text" id="shippingCountry" name="shippingCountry"
+                                           placeholder="Hungary">
+                                    <label for="shippingZip">Zip</label>
+                                    <input type="text" id="shippingZip" name="shippingZip" placeholder="1045">
+                                    <label>
+                                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same
+                                        as
+                                        billing
+                                    </label>
+                                </div>
+                                <div class="col-50">
+                                    <span>Billing address</span>
+                                    <label for="billingCity"><i class="fa fa-institution"></i> City</label>
+                                    <input type="text" id="billingCity" name="city" placeholder="Budapest">
+                                    <label for="billingAddress"><i class="fa fa-address-card-o"></i> Address</label>
+                                    <input type="text" id="billingAddress" name="billingAddress"
+                                           placeholder="542 W. 15th Street">
+                                    <label for="billingCountry"><i class="fa fa-institution"></i> Country</label>
+                                    <input type="text" id="billingCountry" name="billingCity" placeholder="Hungary">
+                                    <label for="billingZip">Zip</label>
+                                    <input type="text" id="billingZip" name="billingZip" placeholder="1045">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </form>
             <div>
-                <h3 id="toggleform" >To the payment methods</h3>
+
+                <h3 id="toggleform">Payment methods</h3>
                 <div id="hideform">
                     <div class="col-50">
-                        <h3>Payment</h3>
-                        <label for="fname">Accepted Cards</label>
-                        <div class="icon-container">
-                            <i class="fa fa-cc-visa" style="color:navy;"></i>
-                            <i class="fa fa-cc-amex" style="color:blue;"></i>
-                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                            <i class="fa fa-cc-discover" style="color:orange;"></i>
-                        </div>
-                        <label for="cname">Name on Card</label>
-                        <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-                        <label for="ccnum">Credit card number</label>
-                        <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                        <label for="expmonth">Exp Month</label>
-                        <input type="text" id="expmonth" name="expmonth" placeholder="September">
 
-                        <div class="row">
-                            <div class="col-50">
-                                <label for="expyear">Exp Year</label>
-                                <input type="text" id="expyear" name="expyear" placeholder="2018">
+                        <img id="creditcardform" src="/static/img/cardlogo.png" alt="Credit Cart logo" height="100"
+                             width="120">
+                        <div id="creditcardhideform">
+                            <label>Accepted Cards</label>
+
+                            <label for="cname">Name on Card</label>
+                            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                            <label for="ccnum">Credit card number</label>
+                            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                            <label for="expmonth">Exp Month</label>
+                            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="expyear">Exp Year</label>
+                                    <input type="text" id="expyear" name="expyear" placeholder="2018">
+                                </div>
+                                <div class="col-50">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="352">
+                                </div>
                             </div>
-                            <div class="col-50">
-                                <label for="cvv">CVV</label>
-                                <input type="text" id="cvv" name="cvv" placeholder="352">
-                            </div>
+                        </div>
+
+                        <img id="paypalform" src="/static/img/paypallogo.png" alt="PayPal logo" height="100"
+                             width="120">
+                        <div id="paypalhideform">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" placeholder="donno@gmail.com">
+                            <label for="password">Password</label>
+                            <input type="text" id="password" name="password" placeholder="******">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="termsAndConditionsCheckbox">
+        <input type="checkbox" name="terms" id=""> I agree to Terms and Conditions
+    </div>
+    <button id="buttonToHide" type="submit" class="btn">Place my order</button>
 </div>
 </div>
-
 
 
 </div>
