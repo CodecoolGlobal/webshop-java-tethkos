@@ -18,7 +18,7 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
@@ -35,45 +35,20 @@
 </div>
 
 <div class="container">
-    <div class="card">
-    <div >
-        <form method="post">
-        <select name="category-selector" >
-
-            <option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.getId()}" >Category</option>
-        </select>
-                <select name="supplier-selector" >
-                    <option th:each="supplier : ${suppliers}" th:text="${supplier.name}" th:value="${supplier.getId()}">Supplier</option>
-                </select>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-    <table>
-        <thead id="title-table">
-        <th th:text="${categoryName.getName()}" style="font-weight: bolder">Category Title</th>
-        <th id="title-space">   -   </th>
-        <th th:text="${supplierName.getName()}" >Supplier</th>
-        </thead>
-    </table>
-
-    </div>
-
     <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
+        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="product : ${productsInCart}">
             <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
+                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${product.key.getId()} + '.jpg'" alt="" />
                 <div class="card-header">
-                    <h4 class="card-title" th:text="${prod.name}">Product name</h4>
-                    <p class="card-text" th:text="${prod.description}">Product description... </p>
+                    <h4 class="card-title" th:text="${product.key.getName()}">Product name</h4>
+                    <p class="card-text" th:text="${product.key.getDescription()}">Product description... </p>
                 </div>
                 <div class="card-body">
                     <div class="card-text">
-                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
+                        <p class="lead" th:text="${product.key.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <form action="/addToCart" method="post" th:value="${prod}">
-                            <button class="btn">Add to cart</button>
-                        </form>
+                        <a class="btn btn-success" href="#">Add to cart</a>
                     </div>
                 </div>
             </div>
