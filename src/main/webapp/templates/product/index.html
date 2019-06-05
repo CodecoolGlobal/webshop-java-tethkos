@@ -53,7 +53,8 @@
                     </div>
                     <div class="card-text">
                         <form action="/addToCart" method="post">
-                            <button class="btn" th:text="${prod.id}">Add to cart</button>
+                            <input name="addToCart" name="product_id" type="button"th:value="${prod.id}">
+                            <button class="btn" type="submit">Add to cart</button>
                         </form>
                     </div>
                 </div>
