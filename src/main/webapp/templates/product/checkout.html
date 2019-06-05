@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Codecool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <title>Codecool Shop</title>
+
+    <!-- Bootstrap components -->
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!--Latest compiled and minified Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+
+    <script src="static/js/checkout.js" defer></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- End of Bootstrap components -->
+
+    <link rel="stylesheet" type="text/css" href="/static/css/checkout.css"/>
+    <link rel="script" type="text/css" href="/static/css/checkout.css"/>
+    <script src="=static/js/checkout.js"></script>
+</head>
+
+<body>
+<div class="container card">
+    <div class="row">
+        <div class="container">
+            <div class="shopping-cart">
+                <h3 class="h3-cart">My Cart</h3>
+                <table>
+                    <thead class="col col-sm-12 col-md-6 col-lg-4 card-header">
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Total price</th>
+                    </thead>
+                    <tbody class="col col-sm-12 col-md-6 col-lg-4 price card-body" th:each="prod : ${cardData}">
+                    <td><img class="prod-image" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.key.getId()} + '.jpg'" alt="" /></td>
+                    <td th:text="${prod.key.getName()}">Product name</td>
+                    <td th:text="${prod.value}">Quantity</td>
+                    <td th:with="result=${prod.key.getDefaultPrice() * prod.value}">
+                        <span th:text="${result}">Total price</span>
+                    </td>
+                    <td>
+                        <form action="/cart" method="post">
+                            <button class="fas fa-angle-up" type="submit" name="addOneProduct"
+                                    th:value="${prod.key.getName()}"></button>
+                            <button class="fas fa-angle-down" type="submit" name="removeOneProduct"
+                                    th:value="${prod.key.getName()}"></button>
+                        </form>
+                    </td>
+
+                    </tbody>
+                </table>
+
+                <div class="card">
+                    <br>
+                    <p class="totalprice"> The total price is: <span th:text="${TotalPrice}">total price</span> USD</p>
+                </div>
+                <button class="bg-light">Checkout</button>
+            </div>
+        </div>
+        <div class="col-75">
+            <form action="/action_page.php">
+                <div class="row">
+                    <div class="col-50">
+                        <h3>Billing Details</h3>
+                        <label for="name"><i class="fa fa-user"></i> Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Bank Aranka">
+                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                        <input type="text" id="email" name="email" placeholder="bankaranka@gmail.com">
+                        <label for="phoneNumber"><i class="fa fa-address-card-o"></i> Phone number</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="0620-123 4567">
+                        <div class="row">
+                            <div class="col-50">
+
+                                <span>Shipping address</span>
+                                <label for="shippingCity"><i class="fa fa-institution"></i> City</label>
+                                <input type="text" id="shippingCity" name="city" placeholder="Budapest">
+                                <label for="shippingAddress"><i class="fa fa-address-card-o"></i>
+                                    Address</label>
+                                <input type="text" id="shippingAddress" name="shippingAddress"
+                                       placeholder="542 W. 15th Street">
+                                <label for="shippingCountry"><i class="fa fa-institution"></i> Country</label>
+                                <input type="text" id="shippingCountry" name="shippingCountry" placeholder="Hungary">
+                                <label for="shippingZip">Zip</label>
+                                <input type="text" id="shippingZip" name="shippingZip" placeholder="1045">
+                                <label>
+                                    <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as
+                                    billing
+                                </label>
+                            </div>
+                            <div class="col-50">
+                                <span>Billing address</span>
+                                <label for="billingCity"><i class="fa fa-institution"></i> City</label>
+                                <input type="text" id="billingCity" name="city" placeholder="Budapest">
+                                <label for="billingAddress"><i class="fa fa-address-card-o"></i> Address</label>
+                                <input type="text" id="billingAddress" name="billingAddress"
+                                       placeholder="542 W. 15th Street">
+                                <label for="billingCountry"><i class="fa fa-institution"></i> Country</label>
+                                <input type="text" id="billingCountry" name="billingCity" placeholder="Hungary">
+                                <label for="billingZip">Zip</label>
+                                <input type="text" id="billingZip" name="billingZip" placeholder="1045">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+            <div>
+                <h3 id="toggleform" >To the payment methods</h3>
+                <div id="hideform">
+                    <div class="col-50">
+                        <h3>Payment</h3>
+                        <label for="fname">Accepted Cards</label>
+                        <div class="icon-container">
+                            <i class="fa fa-cc-visa" style="color:navy;"></i>
+                            <i class="fa fa-cc-amex" style="color:blue;"></i>
+                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        </div>
+                        <label for="cname">Name on Card</label>
+                        <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                        <label for="ccnum">Credit card number</label>
+                        <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                        <label for="expmonth">Exp Month</label>
+                        <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+                        <div class="row">
+                            <div class="col-50">
+                                <label for="expyear">Exp Year</label>
+                                <input type="text" id="expyear" name="expyear" placeholder="2018">
+                            </div>
+                            <div class="col-50">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="352">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+</div>
+
+</body>
+</html>
