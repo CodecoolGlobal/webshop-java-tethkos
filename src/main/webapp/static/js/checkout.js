@@ -16,3 +16,7 @@ $( "#paypalform" ).on( "click", function() {
 $( "#toggleDetails" ).on( "click", function() {
     $('#detailsHideFom').toggle();
 });
+
+$( "#termsAndConditionsCheckbox" ).on( "click", function() {
+    $('#buttonToHide').toggle();
+});
