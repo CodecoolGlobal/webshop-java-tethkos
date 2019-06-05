@@ -17,12 +17,15 @@ import java.io.IOException;
 
 public class CartController extends HttpServlet {
 
+    private CartDao cartDaoData = CartDaoMem.getInstance();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        CartDao cartDaoData = CartDaoMem.getInstance();
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+
+        context.setVariable("productsInCart", cartDaoData.getAll());
 
         engine.process("cart/cart.html", context, resp.getWriter());
     }

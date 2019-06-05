@@ -24,9 +24,19 @@ public class CartDaoMem implements CartDao {
             return instance;
         }
 
-
+        @Override
         public Map<Product, Integer> getAll() {
             return cartData;
+        }
+
+        @Override
+        public void addProduct(Product product) {
+            if (cartData.containsKey(product)) {
+                cartData.put(product, cartData.get(product) + 1);
+            }
+            else {
+                cartData.put(product, 1);
+            }
         }
 
 
