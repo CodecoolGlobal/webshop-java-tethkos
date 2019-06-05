@@ -9,6 +9,7 @@ public interface CartDao {
 
     Map<Product, Integer> getAll();
 
+    Integer getTotalValues();
     void addProduct(Product product);
 
     Double getProductTotal(Product product);
