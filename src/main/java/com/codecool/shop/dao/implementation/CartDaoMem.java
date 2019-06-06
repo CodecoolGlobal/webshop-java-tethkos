@@ -82,8 +82,8 @@ public class CartDaoMem implements CartDao {
     @Override
     public void removeOneProduct(Product product) {
         for (Iterator<Product> iterator = cartData.keySet().iterator(); iterator.hasNext();){
-            Product productiterator = iterator.next();
-            if (productiterator.getName().equals(product.getName())) {
+            Product productIterator = iterator.next();
+            if (productIterator.getName().equals(product.getName())) {
                 if (cartData.get(product) <= 1) {
                     iterator.remove();
                 } else {
