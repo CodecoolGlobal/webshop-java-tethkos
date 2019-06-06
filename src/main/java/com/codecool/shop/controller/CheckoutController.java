@@ -12,6 +12,8 @@ import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
+import com.codecool.shop.payment.Email;
+import com.codecool.shop.payment.JsonConverter;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -21,13 +23,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+
+
+
+
+
 
 @WebServlet(urlPatterns = {"/checkout"})
 public class CheckoutController extends HttpServlet {
+
+    static ArrayList<String> userInformations = new ArrayList<String>();
+
+    static public ArrayList<String> getUserInformation(){
+        return userInformations;
+    }
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,11 +57,52 @@ public class CheckoutController extends HttpServlet {
         CartDao cartDaoData = CartDaoMem.getInstance();
         ProductDao productDao = ProductDaoMem.getInstance();
 
+        Map<Product, Integer> chartProducts = cartDaoData.getAll();
+
+
+        String chartResult = "";
+
+
+        for (Map.Entry<Product, Integer> entry : chartProducts.entrySet()) {
+            Product products = entry.getKey();
+            Integer entity = entry.getValue();
+
+            chartResult += products.getName() + ": " + entity;
+        }
+
+
+
         String  name = request.getParameter("name");
+        String  email = request.getParameter("email");
+        String  phoneNumber = request.getParameter("phoneNumber");
+        String  billingAddress = request.getParameter("billingAddress");
+        String  billingCity = request.getParameter("billingCity");
+        String billingZip = request.getParameter("billingZip");
+
+        String toEmail = "Name: "+ name+" E-mail: "+ email+" Phone number: "+ phoneNumber+ " City:"+billingCity + " Adress: "+ billingAddress
+                + " ZIP: "+ billingZip + " Entity" + chartResult;
+
+        CartController cartController = new CartController();
 
 
-       System.out.println(name+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!4");
-        response.sendRedirect("/confirmation");
+        Email emailSender = new Email();
+        emailSender.send(toEmail,email);
+
+        JsonConverter jsonConverter = new JsonConverter();
+        jsonConverter.main(name, email, phoneNumber, email, billingCity, billingZip, billingAddress, chartResult);
+
+
+        userInformations.add(name);
+        userInformations.add(email);
+        userInformations.add(phoneNumber);
+        userInformations.add(billingAddress);
+        userInformations.add(billingCity);
+        userInformations.add(billingZip);
+        userInformations.add(chartResult);
+
+
+
+        response.sendRedirect("/");
     }
 
 
