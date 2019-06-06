@@ -41,14 +41,21 @@ public class CartController extends HttpServlet {
     protected void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException {
         ProductDao productDao = ProductDaoMem.getInstance();
 
-        String removeProduct = request.getParameter("remove");
-        String addProduct = request.getParameter("add");
+        String removeProduct = request.getParameter("removeOneProduct");
+        String addProduct = request.getParameter("addOneProduct");
+
 
         if (removeProduct != null) {
-            cartDaoData.removeProduct(removeProduct);
+            int productToRemoveId = Integer.parseInt(removeProduct);
+            Product productToRemove = productDao.find(productToRemoveId);
+            cartDaoData.removeProduct(productToRemove);
         }
+
         if (addProduct != null) {
-            cartDaoData.addProduct(addProduct);
+            int productToAddId = Integer.parseInt(addProduct);
+            Product productToAdd = productDao.find(productToAddId);
+            cartDaoData.addProduct(productToAdd);
         }
+        response.sendRedirect("/cart");
     }
 }

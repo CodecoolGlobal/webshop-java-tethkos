@@ -4,6 +4,7 @@ import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.model.Product;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
@@ -58,6 +59,38 @@ public class CartDaoMem implements CartDao {
             cartData.remove(product);
         }
         return null;
+    }
+
+    @Override
+    public void addOneProduct(Product product) {
+        for (Product key : cartData.keySet()) {
+            if (product.getName().equals(key.getName())) {
+                cartData.put(key, cartData.get(key) + 1);
+            }
+        }
+    }
+
+
+//    for (Iterator<String> iterator = list.iterator(); iterator.hasNext(); ) {
+//        String value = iterator.next();
+//        if (value.length() > 5) {
+//            iterator.remove();
+//        }
+//    }
+
+
+    @Override
+    public void removeOneProduct(Product product) {
+        for (Iterator<Product> iterator = cartData.keySet().iterator(); iterator.hasNext();){
+            Product productiterator = iterator.next();
+            if (productiterator.getName().equals(product.getName())) {
+                if (cartData.get(product) <= 1) {
+                    iterator.remove();
+                } else {
+                    cartData.put(product, cartData.get(product) - 1);
+                }
+            }
+        }
     }
 
     @Override

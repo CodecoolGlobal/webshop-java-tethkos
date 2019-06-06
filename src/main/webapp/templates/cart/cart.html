@@ -89,13 +89,14 @@
             <th scope="row" th:text="${product.key.getName()}">product name</th>
             <td th:text="${product.key.getPrice()}">product price</td>
             <td>
-                <form>
-                    <input type="submit" value="-" class="btn btn-secondary">
+                <form action="/cart" method="post">
+                    <button type="submit" name="addOneProduct" class="btn btn-secondary" th:value="${product.key.getId()}" >add</button>
+                </form>
             </td>
             <td th:text="${product.value}">product quantity</td>
             <td>
-
-                    <input type="submit" value="+" class="btn btn-secondary">
+                <form action="/cart" method="post">
+                    <button type="submit" name="removeOneProduct" class="btn btn-secondary" th:value="${product.key.getId()}" >remove</button>
                 </form>
             </td>
             <td th:with="result = ${product.key.getDefaultPrice() * product.value}"><span th:text="${result}">total price of product</span>

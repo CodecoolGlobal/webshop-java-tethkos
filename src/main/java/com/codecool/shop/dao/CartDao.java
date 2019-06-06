@@ -18,4 +18,8 @@ public interface CartDao {
 
     float getTotalOfAll();
 
+    void addOneProduct(Product product);
+
+    void removeOneProduct(Product product);
+
 }
