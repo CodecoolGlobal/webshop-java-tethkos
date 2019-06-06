@@ -27,16 +27,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-
-
-
-
 @WebServlet(urlPatterns = {"/checkout"})
 public class CheckoutController extends HttpServlet {
 
     static ArrayList<String> userInformations = new ArrayList<String>();
 
-    static public ArrayList<String> getUserInformation(){
+    static public ArrayList<String> getUserInformation() {
         return userInformations;
     }
 
@@ -54,6 +50,8 @@ public class CheckoutController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
         CartDao cartDaoData = CartDaoMem.getInstance();
         ProductDao productDao = ProductDaoMem.getInstance();
 
@@ -71,22 +69,21 @@ public class CheckoutController extends HttpServlet {
         }
 
 
-
-        String  name = request.getParameter("name");
-        String  email = request.getParameter("email");
-        String  phoneNumber = request.getParameter("phoneNumber");
-        String  billingAddress = request.getParameter("billingAddress");
-        String  billingCity = request.getParameter("billingCity");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phoneNumber = request.getParameter("phoneNumber");
+        String billingAddress = request.getParameter("billingAddress");
+        String billingCity = request.getParameter("billingCity");
         String billingZip = request.getParameter("billingZip");
 
-        String toEmail = "Name: "+ name+" E-mail: "+ email+" Phone number: "+ phoneNumber+ " City:"+billingCity + " Adress: "+ billingAddress
-                + " ZIP: "+ billingZip + " Entity" + chartResult;
+        String toEmail = "Name: " + name + " E-mail: " + email + " Phone number: " + phoneNumber + " City:" + billingCity + " Adress: " + billingAddress
+                + " ZIP: " + billingZip + " Entity" + chartResult;
 
         CartController cartController = new CartController();
 
 
         Email emailSender = new Email();
-        emailSender.send(toEmail,email);
+        emailSender.send(toEmail, email);
 
         JsonConverter jsonConverter = new JsonConverter();
         jsonConverter.main(name, email, phoneNumber, email, billingCity, billingZip, billingAddress, chartResult);
@@ -101,11 +98,10 @@ public class CheckoutController extends HttpServlet {
         userInformations.add(chartResult);
 
 
-
+        cartDaoData.getAll().clear();
         response.sendRedirect("/");
+
     }
-
-
 
 
 }

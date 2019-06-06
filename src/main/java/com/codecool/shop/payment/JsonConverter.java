@@ -4,6 +4,9 @@ package com.codecool.shop.payment;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import com.codecool.shop.dao.CartDao;
+import com.codecool.shop.dao.implementation.CartDaoMem;
+import com.codecool.shop.dao.implementation.ProductDaoMem;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -26,7 +29,7 @@ public class JsonConverter {
         LocalDate localDate = LocalDate.now();
         String currentDate = dtf.format(localDate);
 
-        String txtName = "src/orders"+ currentDate+"..."+id +".txt";
+        String txtName = "src/orders" + currentDate + "..." + id + ".txt";
 
 
         JSONObject obj = new JSONObject();
@@ -39,21 +42,12 @@ public class JsonConverter {
         obj.put("Name", name);
         obj.put("Entity", entity);
 
-
-
-
-
-
-
-
-
-
-
-        // try-with-resources statement based on post comment below :)
         try (FileWriter file = new FileWriter(txtName)) {
             file.write(obj.toJSONString());
             System.out.println("Successfully Copied JSON Object to File...");
             System.out.println("\nJSON Object: " + obj);
+
+
         }
     }
 

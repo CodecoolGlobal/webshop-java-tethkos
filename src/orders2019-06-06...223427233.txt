@@ -1,1 +1,0 @@
-{"Entity":"Amazon Fire: 1","E-mail":"bereczk.gergo@gmail.com","Adress":"","Phone number":"","Zipcode":"","Country":"bereczk.gergo@gmail.com","City":"","Name":"gergo"}

@@ -22,4 +22,5 @@ public interface CartDao {
 
     void removeOneProduct(Product product);
 
+
 }

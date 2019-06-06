@@ -25,6 +25,7 @@ public class CartDaoMem implements CartDao {
         return instance;
     }
 
+
     @Override
     public Map<Product, Integer> getAll() {
         return cartData;
@@ -54,8 +55,7 @@ public class CartDaoMem implements CartDao {
     public CartDao removeProduct(Product product) {
         if (cartData.get(product) >= 1) {
             cartData.put(product, cartData.get(product) - 1);
-        }
-        else {
+        } else {
             cartData.remove(product);
         }
         return null;
@@ -81,7 +81,7 @@ public class CartDaoMem implements CartDao {
 
     @Override
     public void removeOneProduct(Product product) {
-        for (Iterator<Product> iterator = cartData.keySet().iterator(); iterator.hasNext();){
+        for (Iterator<Product> iterator = cartData.keySet().iterator(); iterator.hasNext(); ) {
             Product productIterator = iterator.next();
             if (productIterator.getName().equals(product.getName())) {
                 if (cartData.get(product) <= 1) {
