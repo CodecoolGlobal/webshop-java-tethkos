@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <meta name="author" content="Codecool" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta charset="utf-8"/>
+    <meta name="author" content="Codecool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <title>Codecool Shop</title>
 
@@ -14,52 +14,109 @@
 
     <!--Latest compiled and minified Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
-    <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="/static/css/custom_2.css"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 </head>
 
 <body>
+
+<div th:replace="header.html :: copy"></div>
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="/cart" class="dropdown-toggle" role="button"><span
+                            class="glyphicon glyphicon-shopping-cart" th:text="${items}"></span>Items </a>
+                <li class="divider"></li>
+            </ul>
+            </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<script type="text/javascript">
+
+</script>
 
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
 </div>
 
 <div class="container">
-    <table>
+    <table class="table table-striped table-dark">
         <thead>
-            <tr>
-                <th>name</th>
-                <th>price</th>
-                <th>quantity</th>
-                <th>total</th>
-            </tr>
+        <tr>
+            <th scope="col">name</th>
+            <th scope="col">price</th>
+            <th scope="col"></th>
+            <th scope="col">quantity</th>
+            <th scope="col"></th>
+            <th scope="col">total</th>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="product: ${productsInCart}">
-                <td th:text="${product.key.getName()}">product name</td>
-                <td th:text="${product.key.getPrice()}">product price</td>
-                <td th:text="${product.value}">product quantity</td>
-                <td th:with="result = ${product.key.getDefaultPrice() * product.value}"> <span th:text="${result}">total price of product</span></td>
-            </tr>
+        <tr th:each="product: ${productsInCart}">
+            <th scope="row" th:text="${product.key.getName()}">product name</th>
+            <td th:text="${product.key.getPrice()}">product price</td>
+            <td>
+                <form action="/cart" method="post">
+                    <button type="submit" name="addOneProduct" class="btn btn-secondary" th:value="${product.key.getId()}" >add</button>
+                </form>
+            </td>
+            <td th:text="${product.value}">product quantity</td>
+            <td>
+                <form action="/cart" method="post">
+                    <button type="submit" name="removeOneProduct" class="btn btn-secondary" th:value="${product.key.getId()}" >remove</button>
+                </form>
+            </td>
+            <td th:with="result = ${product.key.getDefaultPrice() * product.value}"><span th:text="${result}">total price of product</span>
+            </td>
+        </tr>
         </tbody>
 
         <tbody>
-            <tr>
-                <td>total price of cart</td>
-            </tr>
+        <tr>
+            <th>total price of cart</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th th:text="${totalPrice}">total price of cart</th>
+        </tr>
         </tbody>
 
     </table>
+    <a href="/checkout"><button class="btn btn-secondary">Proceed to checkout</button></a>
 
 </div>
 
