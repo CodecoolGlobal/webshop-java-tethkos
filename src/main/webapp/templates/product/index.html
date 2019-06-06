@@ -27,10 +27,10 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
-    <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
 
 
-    <link rel="stylesheet" type="text/css" href="/static/css/custom_2.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/custom_2.css"/>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -41,7 +41,6 @@
 
 
 <div th:replace="header.html :: copy"></div>
-
 
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -57,10 +56,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="/cart" class="dropdown-toggle" role="button"><span class="glyphicon glyphicon-shopping-cart"th:text="${items}"></span>Items </a>
-                        <li class="divider"></li>
-                    </ul>
-                </li>
+                    <a href="/cart" class="dropdown-toggle" role="button"><span
+                            class="glyphicon glyphicon-shopping-cart" th:text="${items}"></span>Items </a>
+                <li class="divider"></li>
+            </ul>
+            </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -72,25 +72,29 @@
 <div class="container">
 
     <div class="card">
-    <div >
-        <form method="post">
-        <select name="category-selector" >
+        <div>
+            <form method="post">
+                <select name="category-selector">
 
-            <option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.getId()}" >Category</option>
-        </select>
-                <select name="supplier-selector" >
-                    <option th:each="supplier : ${suppliers}" th:text="${supplier.name}" th:value="${supplier.getId()}">Supplier</option>
+                    <option th:each="category : ${categories}" th:text="${category.name}"
+                            th:value="${category.getId()}">Category
+                    </option>
                 </select>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-    <table>
-        <thead id="title-table">
-        <th th:text="${categoryName.getName()}" style="font-weight: bolder">Category Title</th>
-        <th id="title-space">   -   </th>
-        <th th:text="${supplierName.getName()}" >Supplier</th>
-        </thead>
-    </table>
+                <select name="supplier-selector">
+                    <option th:each="supplier : ${suppliers}" th:text="${supplier.name}" th:value="${supplier.getId()}">
+                        Supplier
+                    </option>
+                </select>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <table>
+            <thead id="title-table">
+            <th th:text="${categoryName.getName()}" style="font-weight: bolder">Category Title</th>
+            <th id="title-space"> -</th>
+            <th th:text="${supplierName.getName()}">Supplier</th>
+            </thead>
+        </table>
 
     </div>
 
@@ -109,8 +113,8 @@
                     </div>
                     <div class="card-text">
                         <form action="/addToCart" method="post">
-                            <input type="hidden" name="productId"  th:value="${prod.getId()}">
-                            <button class="btn" type="submit" >Add to cart</button>
+                            <input type="hidden" name="productId" th:value="${prod.getId()}">
+                            <button class="btn" type="submit">Add to cart</button>
                         </form>
 
                     </div>
