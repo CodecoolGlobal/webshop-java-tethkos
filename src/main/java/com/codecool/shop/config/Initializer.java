@@ -49,7 +49,7 @@ public class Initializer implements ServletContextListener {
         ProductCategory calligraphic = new ProductCategory("Calligraphic", "Tattoo", "");
         productCategoryDataStore.add(calligraphic);
         ProductCategory realistic = new ProductCategory("Realistic", "Tattoo", "");
-        productCategoryDataStore.add(calligraphic);
+        productCategoryDataStore.add(realistic);
         ProductCategory couple = new ProductCategory("For trve lovers", "Tattoo", "");
         productCategoryDataStore.add(couple);
 
