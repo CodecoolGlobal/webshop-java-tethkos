@@ -2,12 +2,17 @@ package com.codecool.shop.dao.implementation;
 
 
 import com.codecool.shop.dao.ProductCategoryDao;
+import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class ProductCategoryDaoMem implements ProductCategoryDao {
+    private HashMap<Product, Integer> cartData = new LinkedHashMap<>();
+
 
     private List<ProductCategory> data = new ArrayList<>();
     private static ProductCategoryDaoMem instance = null;
@@ -16,6 +21,13 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
      */
     private ProductCategoryDaoMem() {
     }
+
+    public HashMap<Product, Integer> getAllHashMap() {
+        return cartData;
+    }
+
+
+
 
     public static ProductCategoryDaoMem getInstance() {
         if (instance == null) {
