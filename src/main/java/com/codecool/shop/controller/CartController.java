@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Enumeration;
 
 @WebServlet(urlPatterns = {"/cart"})
 
@@ -38,19 +37,14 @@ public class CartController extends HttpServlet {
     protected void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException {
         ProductDao productDao = ProductDaoMem.getInstance();
 
-        String[] productIdString = request.getParameterValues("productId");
-        String minus = request.getParameter("remove");
-        String plus = request.getParameter("add");
+        String removeProduct = request.getParameter("remove");
+        String addProduct = request.getParameter("add");
 
-        if (request.getParameter().contains(minus)) {
-            int productId = Integer.parseInt(String.valueOf(productIdString));
-            CartDao removeProduct = cartDaoData.removeProduct(productDao.find(productId));
-            response.sendRedirect("/cart");
+        if (removeProduct != null) {
+            cartDaoData.removeProduct(removeProduct);
         }
-        else if (request.getParameter().contains(plus)) {
-            int productId = Integer.parseInt(String.valueOf(productIdString));
-            CartDao addProduct = cartDaoData.addProduct(productDao.find(productId));
-            response.sendRedirect("/cart");
+        if (addProduct != null) {
+            cartDaoData.addProduct(addProduct);
         }
     }
 }
