@@ -43,12 +43,11 @@
                 <table>
                     <thead class="col col-sm-12 col-md-6 col-lg-4 card-header">
                     <th>Product</th>
-                    <th>Name</th>
-                    <th>Quantity</th>
+                    <th style="text-align: right">Quantity</th>
                     </thead>
                     <tbody class="col col-sm-12 col-md-6 col-lg-4 price card-body" th:each="prod : ${cartData}">
                     <td th:text="${prod.key.getName()}">Product name</td>
-                    <td th:text="${prod.value}">Quantity</td>
+                    <td th:text="${prod.value}" style="text-align: right">Quantity</td>
                     </tbody>
                 </table>
             </div>
@@ -106,8 +105,7 @@
             <div>
 
                 <h3 id="toggleform">Payment methods</h3>
-                <div id="hideform">
-                    <div class="col-50">
+                <div class="col-50">
 
                         <img id="creditcardform" src="/static/img/cardlogo.png" alt="Credit Cart logo" height="100"
                              width="120">

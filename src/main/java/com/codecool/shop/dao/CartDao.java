@@ -12,8 +12,8 @@ public interface CartDao {
     Integer getTotalValues();
     void addProduct(Product product);
 
-    Double getProductTotal(Product product);
+    float getProductTotal(Product product);
 
-    Double getTotalOfAll();
+    float getTotalOfAll();
 
 }

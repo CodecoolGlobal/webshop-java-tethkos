@@ -29,6 +29,7 @@ public class CheckoutController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("cartData", cartDaoData.getAll());
+        context.setVariable("totalPrice", cartDaoData.getTotalOfAll());
         engine.process("product/checkout.html", context, resp.getWriter());
     }
 }

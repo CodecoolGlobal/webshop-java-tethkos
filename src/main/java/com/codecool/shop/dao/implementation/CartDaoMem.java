@@ -34,34 +34,36 @@ public class CartDaoMem implements CartDao {
         int count = 0;
         for (Integer i : cartData.values()) {
             count += i;
-            }
-        return count;
         }
+        return count;
+    }
 
 
     @Override
-    public void addProduct (Product product){
+    public void addProduct(Product product) {
         if (cartData.containsKey(product)) {
             cartData.put(product, cartData.get(product) + 1);
         } else {
             cartData.put(product, 1);
         }
-
-    @Override
-    public Double getProductTotal(Product product) {
-        Double productTotal = Double.parseDouble(product.getPrice()) * cartData.get(product);
-        return productTotal;
     }
 
     @Override
-    public Double getTotalOfAll() {
-            Double totalOfAll = null;
-            for (Product key : cartData.keySet()) {
-                totalOfAll =+ getProductTotal(key);
-            }
+    public float getProductTotal(Product product) {
+        return product.getDefaultPrice() * cartData.get(product);
+    }
+
+    @Override
+    public float getTotalOfAll() {
+        float totalOfAll = 0;
+        for (Product key : cartData.keySet()) {
+            totalOfAll = +getProductTotal(key);
+        }
 
         return totalOfAll;
     }
 
+
+}
 
 
