@@ -18,6 +18,8 @@ import java.io.IOException;
 public class CartController extends HttpServlet {
 
     private CartDao cartDaoData = CartDaoMem.getInstance();
+    CartDao cartDaoItems = CartDaoMem.getInstance();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -26,6 +28,8 @@ public class CartController extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
         context.setVariable("productsInCart", cartDaoData.getAll());
+        context.setVariable("items", cartDaoItems.getTotalValues());
+        context.setVariable("totalPrice", cartDaoData.getTotalOfAll());
 
         engine.process("cart/cart.html", context, resp.getWriter());
     }
