@@ -35,6 +35,7 @@
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom_2.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/checkout.css"/>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -48,13 +49,13 @@
         <div class="container">
             <div class="shopping-cart">
                 <h5 class="h3-cart">Your order</h5>
-                <table>
-                    <thead class="col col-sm-12 col-md-6 col-lg-4 card-header">
-                    <th>Product</th>
-                    <th style="text-align: right">Quantity</th>
+                <table class="table table-striped">
+                    <thead>
+                    <th scope="col">Product</th>
+                    <th scope="col">Quantity</th>
                     </thead>
-                    <tbody class="col col-sm-12 col-md-6 col-lg-4 price card-body" th:each="prod : ${cartData}">
-                    <td th:text="${prod.key.getName()}">Product name</td>
+                    <tbody th:each="prod : ${cartData}">
+                    <td scope="row" th:text="${prod.key.getName()}">Product name</td>
                     <td th:text="${prod.value}" style="text-align: right">Quantity</td>
                     </tbody>
 
@@ -129,13 +130,14 @@
                         <label for="password">Password</label>
                         <input type="text" id="password" name="password" placeholder="******">
                     </div>
+                    <div id="termsAndConditionsCheckbox">
+                        <input type="checkbox" name="terms" id=""> I agree to Terms and Conditions
+                    </div>
+                    <button id="buttonToHide" type="submit" class="btn">Place my order</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div id="termsAndConditionsCheckbox">
-    <input type="checkbox" name="terms" id=""> I agree to Terms and Conditions
 </div>
 <button id="buttonToHide" type="submit" class="btn">Place my order</button>
 </div>
