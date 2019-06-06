@@ -18,7 +18,7 @@ import java.time.LocalDate;
 public class JsonConverter {
 
     @SuppressWarnings("unchecked")
-    public void main(String name, String email, String phoneNumber, String country, String city, String zipcode, String adress) throws IOException {
+    public void main(String name, String email, String phoneNumber, String country, String city, String zipcode, String adress, String entity) throws IOException {
 
         int id = (int) (System.currentTimeMillis() & 0xfffffff);
 
@@ -26,7 +26,7 @@ public class JsonConverter {
         LocalDate localDate = LocalDate.now();
         String currentDate = dtf.format(localDate);
 
-        String txtName = "/home/gergo/Desktop/"+ currentDate+"..."+id +".txt";
+        String txtName = "src/orders"+ currentDate+"..."+id +".txt";
 
 
         JSONObject obj = new JSONObject();
@@ -37,6 +37,7 @@ public class JsonConverter {
         obj.put("Zipcode", zipcode);
         obj.put("Adress", adress);
         obj.put("Name", name);
+        obj.put("Entity", entity);
 
 
 
@@ -46,11 +47,7 @@ public class JsonConverter {
 
 
 
-        JSONArray company = new JSONArray();
-        company.add("Compnay: eBay");
-        company.add("Compnay: Paypal");
-        company.add("Compnay: Google");
-        obj.put("Company List", company);
+
 
         // try-with-resources statement based on post comment below :)
         try (FileWriter file = new FileWriter(txtName)) {
