@@ -82,12 +82,13 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Disco Queen", 9990, "HUF", "For the real gold diggers #partyneverstops", makeup,pony));
         productDataStore.add(new Product("Natural look", 3490, "HUF", "For animal lovers", makeup,pony));
         productDataStore.add(new Product("EKIN", 3490, "HUF", "Just do it!", makeup,bang));
-        productDataStore.add(new Product("Babyboi", 5690, "HUF", "Welcome to the family", makeup,bang));
-        productDataStore.add(new Product("Twins", 5690, "HUF", "One is never enough", makeup,bang));
-        productDataStore.add(new Product("Babygurl", 5690, "HUF", "Little princess", makeup,johnny));
+        productDataStore.add(new Product("Babyboi", 10000, "HUF", "Welcome to the family", makeup,bang));
+        productDataStore.add(new Product("Twins", 6500, "HUF", "One is never enough", makeup,bang));
+        productDataStore.add(new Product("Babygurl", 4500, "HUF", "Little princess", makeup,johnny));
         productDataStore.add(new Product("Pink Foyld", 5690, "HUF", "Dark side of the art", makeup,johnny));
-        productDataStore.add(new Product("Mrs. Jolie", 5690, "HUF", "Tomb Raider on your skin", makeup,ritkit));
-        productDataStore.add(new Product("Hell of a Spite", 5690, "HUF", "F**k Coke", makeup,ritkit));
+        productDataStore.add(new Product("Mrs. Jolie", 7600, "HUF", "Tomb Raider on your skin", makeup,ritkit));
+        productDataStore.add(new Product("Hell of a Spite", 9000, "HUF", "F**k Coke", makeup,ritkit));
+        productDataStore.add(new Product("Perfect Match", 5690, "HUF", "Perfect Match", couple,ritkit));
 
 
     }
