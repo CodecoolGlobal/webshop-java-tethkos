@@ -66,7 +66,7 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("MC Donald", 1990, "HUF", "For that one meal to remember", calligraphic, pony));
         productDataStore.add(new Product("Live You're Life", 1990, "HUF", "YOLO 2", calligraphic, ritkit));
         productDataStore.add(new Product("It's is your life", 1990, "HUF", "Get the famous song on your belly", calligraphic, ritkit));
-        productDataStore.add(new Product("Marilyn", 8990, "HUF", "What else to say", realistic, pony));
+        productDataStore.add(new Product("Marilyn", 8990, "HUF", "What else to say", famousPeople, pony));
         productDataStore.add(new Product("Toilet", 3990, "HUF", "You're favorite spot on the world", realistic, pony));
         productDataStore.add(new Product("Twilight", 9990, "HUF", "Mr. Vampire himself on ouy", realistic, bang));
         productDataStore.add(new Product("Family Portrait", 19990, "HUF", "First is Family", realistic, johnny));
