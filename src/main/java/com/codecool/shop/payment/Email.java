@@ -18,9 +18,9 @@ public class Email {
 // File Name SendEmail.java
 
 
-        public void send() {
+        public void send(String orderData, String emailAdress) {
             // Recipient's Email ID needs to be mentioned.
-            String to = "bereczk.gergo@gmail.com";
+            String to = emailAdress;
 
             // Sender's Email ID needs to be mentioned
             String from = "terinktatoo@gmail.com";
@@ -35,7 +35,7 @@ public class Email {
             props.put("mail.smtp.starttls.enable", "true");
             props.put("mail.smtp.host", host);
             props.put("mail.smtp.port", "587");
-            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5");
+
 
             // Get the Session object.
             Session session = Session.getInstance(props,
@@ -57,10 +57,10 @@ public class Email {
                         InternetAddress.parse(to));
 
                 // Set Subject: header field
-                message.setSubject("rendelésed");
+                message.setSubject("Your order from Terink:");
 
                 // Now set the actual message
-                message.setText("kaptál egy fasza tetkót ");
+                message.setText(orderData);
 
                 // Send message
                 Transport.send(message);

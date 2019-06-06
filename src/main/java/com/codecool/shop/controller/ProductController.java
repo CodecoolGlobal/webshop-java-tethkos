@@ -33,10 +33,14 @@ public class ProductController extends HttpServlet {
         context.setVariable("products", productDataStore.getBy(productCategoryDataStore.find(1)));
 
         JsonConverter jsonConverter = new JsonConverter();
-        jsonConverter.main();
+        jsonConverter.main("Bereczk Gergő", "bereczk.gergo@gmail.com", "06309759001","Hungary", "Budapest", "1111", "Üteg utca 16");
 
-        Email email = new Email();
-        //email.send();
+        //Email email = new Email();
+        //email.send("Tetkó", "bereczk.gergo@gmail.com");
+
+
+
+
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
         // params.put("category", productCategoryDataStore.find(1));
