@@ -49,7 +49,7 @@ public class Initializer implements ServletContextListener {
         ProductCategory calligraphic = new ProductCategory("Calligraphic", "Tattoo", "");
         productCategoryDataStore.add(calligraphic);
         ProductCategory realistic = new ProductCategory("Realistic", "Tattoo", "");
-        productCategoryDataStore.add(calligraphic);
+        productCategoryDataStore.add(realistic);
         ProductCategory couple = new ProductCategory("For trve lovers", "Tattoo", "");
         productCategoryDataStore.add(couple);
 
@@ -66,7 +66,7 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("MC Donald", 1990, "HUF", "For that one meal to remember", calligraphic, pony));
         productDataStore.add(new Product("Live You're Life", 1990, "HUF", "YOLO 2", calligraphic, ritkit));
         productDataStore.add(new Product("It's is your life", 1990, "HUF", "Get the famous song on your belly", calligraphic, ritkit));
-        productDataStore.add(new Product("Marilyn", 8990, "HUF", "What else to say", realistic, pony));
+        productDataStore.add(new Product("Marilyn", 8990, "HUF", "What else to say", famousPeople, pony));
         productDataStore.add(new Product("Toilet", 3990, "HUF", "You're favorite spot on the world", realistic, pony));
         productDataStore.add(new Product("Twilight", 9990, "HUF", "Mr. Vampire himself on ouy", realistic, bang));
         productDataStore.add(new Product("Family Portrait", 19990, "HUF", "First is Family", realistic, johnny));
@@ -82,12 +82,13 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Disco Queen", 9990, "HUF", "For the real gold diggers #partyneverstops", makeup,pony));
         productDataStore.add(new Product("Natural look", 3490, "HUF", "For animal lovers", makeup,pony));
         productDataStore.add(new Product("EKIN", 3490, "HUF", "Just do it!", makeup,bang));
-        productDataStore.add(new Product("Babyboi", 5690, "HUF", "Welcome to the family", makeup,bang));
-        productDataStore.add(new Product("Twins", 5690, "HUF", "One is never enough", makeup,bang));
-        productDataStore.add(new Product("Babygurl", 5690, "HUF", "Little princess", makeup,johnny));
+        productDataStore.add(new Product("Babyboi", 10000, "HUF", "Welcome to the family", makeup,bang));
+        productDataStore.add(new Product("Twins", 6500, "HUF", "One is never enough", makeup,bang));
+        productDataStore.add(new Product("Babygurl", 4500, "HUF", "Little princess", makeup,johnny));
         productDataStore.add(new Product("Pink Foyld", 5690, "HUF", "Dark side of the art", makeup,johnny));
-        productDataStore.add(new Product("Mrs. Jolie", 5690, "HUF", "Tomb Raider on your skin", makeup,ritkit));
-        productDataStore.add(new Product("Hell of a Spite", 5690, "HUF", "F**k Coke", makeup,ritkit));
+        productDataStore.add(new Product("Mrs. Jolie", 7600, "HUF", "Tomb Raider on your skin", makeup,ritkit));
+        productDataStore.add(new Product("Hell of a Spite", 9000, "HUF", "F**k Coke", makeup,ritkit));
+        productDataStore.add(new Product("Perfect Match", 5690, "HUF", "Perfect Match", couple,ritkit));
 
 
     }

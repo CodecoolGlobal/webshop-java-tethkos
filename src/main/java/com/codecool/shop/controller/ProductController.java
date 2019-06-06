@@ -79,7 +79,7 @@ public class ProductController extends HttpServlet {
         Supplier selectedSupplier = supplierDataStore.find(Integer.parseInt(req.getParameter("supplier-selector")));
         context.setVariable("supplierName", selectedSupplier);
         selectedProducts = selectedCategory.getName().equals("All Category") ? productDataStore.getAll() :  productDataStore.getBy(selectedCategory);
-        selectedProducts =  selectedSupplier.getName().equals("All Supplier") ? selectedProducts : selectedProducts.stream().filter(x -> x.getSupplier().equals(selectedSupplier)).collect(Collectors.toList());
+        selectedProducts =  selectedSupplier.getName().equals("All Artists") ? selectedProducts : selectedProducts.stream().filter(x -> x.getSupplier().equals(selectedSupplier)).collect(Collectors.toList());
         context.setVariable("products", selectedProducts);
         engine.process("product/index.html", context, resp.getWriter());
     }
