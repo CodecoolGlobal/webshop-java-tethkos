@@ -35,25 +35,31 @@
 </div>
 
 <div class="container">
-    <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="product : ${productsInCart}">
-            <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${product.key.getId()} + '.jpg'" alt="" />
-                <div class="card-header">
-                    <h4 class="card-title" th:text="${product.key.getName()}">Product name</h4>
-                    <p class="card-text" th:text="${product.key.getDescription()}">Product description... </p>
-                </div>
-                <div class="card-body">
-                    <div class="card-text">
-                        <p class="lead" th:text="${product.key.getPrice()}">100 USD</p>
-                    </div>
-                    <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>price</th>
+                <th>quantity</th>
+                <th>total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product: ${productsInCart}">
+                <td th:text="${product.key.getName()}">product name</td>
+                <td th:text="${product.key.getPrice()}">product price</td>
+                <td th:text="${product.value}">product quantity</td>
+                <td th:with="result = ${product.key.getDefaultPrice() * product.value}"> <span th:text="${result}">total price of product</span></td>
+            </tr>
+        </tbody>
+
+        <tbody>
+            <tr>
+                <td>total price of cart</td>
+            </tr>
+        </tbody>
+
+    </table>
 
 </div>
 
