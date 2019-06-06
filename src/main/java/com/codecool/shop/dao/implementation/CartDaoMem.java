@@ -102,7 +102,7 @@ public class CartDaoMem implements CartDao {
     public float getTotalOfAll() {
         float totalOfAll = 0;
         for (Product key : cartData.keySet()) {
-            totalOfAll = +getProductTotal(key);
+            totalOfAll += getProductTotal(key);
         }
 
         return totalOfAll;

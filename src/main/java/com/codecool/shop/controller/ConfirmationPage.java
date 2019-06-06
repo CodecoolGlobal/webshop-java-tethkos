@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
-
-    @WebServlet(urlPatterns = {"/confirmation"})
+@WebServlet(urlPatterns = {"/confirmation"})
     public class ConfirmationPage extends HttpServlet {
 
         @Override
@@ -30,9 +30,9 @@ import java.io.IOException;
             TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
             WebContext context = new WebContext(req, resp, req.getServletContext());
 
+            ArrayList<String> userInformations = CheckoutController.getUserInformation();
 
-
-
+           context.setVariable("userInfomation", userInformations);
 
             engine.process("product/ConfirmationPage.html", context, resp.getWriter());
         }
