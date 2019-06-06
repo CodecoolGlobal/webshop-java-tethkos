@@ -39,7 +39,7 @@
     <div class="row">
         <div class="container">
             <div class="shopping-cart">
-                <h5 class="h3-cart">Your order</h5>
+                <h3 class="h3-cart">Your order</h3>
                 <table>
                     <thead class="col col-sm-12 col-md-6 col-lg-4 card-header">
                     <th>Product</th>
@@ -49,14 +49,16 @@
                     <td th:text="${prod.key.getName()}">Product name</td>
                     <td th:text="${prod.value}" style="text-align: right">Quantity</td>
                     </tbody>
+
                 </table>
+                <p class="totalprice"> The total price is: <span th:text="${totalPrice}">total price</span> USD</p>
             </div>
         </div>
         <div class="col-75">
             <form action="/confirmation" method="post">
                 <div class="row">
                     <div class="col-50">
-                        <h3 id="toggleDetails">Billing Details</h3>
+                        <h5 id="toggleDetails">Billing Details</h5>
                         <div id="detailsHideFom">
                             <label for="name"><i class="fa fa-user"></i> Full Name</label>
                             <input type="text" id="name" name="name" placeholder="Bank Aranka">
@@ -65,26 +67,6 @@
                             <label for="phoneNumber"><i class="fa fa-address-card-o"></i> Phone number</label>
                             <input type="text" id="phoneNumber" name="phoneNumber" placeholder="0620-123 4567">
                             <div class="row">
-                                <div class="col-50">
-
-                                    <span>Shipping address</span>
-                                    <label for="shippingCity"><i class="fa fa-institution"></i> City</label>
-                                    <input type="text" id="shippingCity" name="city" placeholder="Budapest">
-                                    <label for="shippingAddress"><i class="fa fa-address-card-o"></i>
-                                        Address</label>
-                                    <input type="text" id="shippingAddress" name="shippingAddress"
-                                           placeholder="542 W. 15th Street">
-                                    <label for="shippingCountry"><i class="fa fa-institution"></i> Country</label>
-                                    <input type="text" id="shippingCountry" name="shippingCountry"
-                                           placeholder="Hungary">
-                                    <label for="shippingZip">Zip</label>
-                                    <input type="text" id="shippingZip" name="shippingZip" placeholder="1045">
-                                    <label>
-                                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same
-                                        as
-                                        billing
-                                    </label>
-                                </div>
                                 <div class="col-50">
                                     <span>Billing address</span>
                                     <label for="billingCity"><i class="fa fa-institution"></i> City</label>
@@ -101,10 +83,10 @@
                         </div>
                     </div>
                 </div>
-            </form>
+
             <div>
 
-                <h3 id="toggleform">Payment methods</h3>
+                <h5 id="toggleform">Payment methods</h5>
                 <div class="col-50">
 
                         <img id="creditcardform" src="/static/img/cardlogo.png" alt="Credit Cart logo" height="100"
@@ -141,13 +123,15 @@
                         </div>
                     </div>
                 </div>
+                <div id="termsAndConditionsCheckbox">
+                    <input type="checkbox" name="terms" id=""> I agree to Terms and Conditions
+                </div>
+                <button id="buttonToHide" type="submit" class="btn">Place my order</button>
+            </form>
             </div>
         </div>
-    </div>
-    <div id="termsAndConditionsCheckbox">
-        <input type="checkbox" name="terms" id=""> I agree to Terms and Conditions
-    </div>
-    <button id="buttonToHide" type="submit" class="btn">Place my order</button>
+
+</div>
 </div>
 </div>
 
