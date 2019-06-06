@@ -61,6 +61,7 @@
     margin: 0 0 11px;
 }
 
+
 body{
     background-image: url("../img/background.jpg");
     background-position: top;
@@ -114,5 +115,10 @@ body{
     opacity: 0.9;
     background-color: white;
     font-size: 18px;
-    color: black;
+  color: black;}
+
+#title-space{
+    width: 20%;
+  text-align: center;
+
 }
