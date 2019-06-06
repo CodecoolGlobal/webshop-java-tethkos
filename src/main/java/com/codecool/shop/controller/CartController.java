@@ -3,7 +3,10 @@ package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.CartDao;
+import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
+import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.model.Product;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -32,5 +35,20 @@ public class CartController extends HttpServlet {
         context.setVariable("totalPrice", cartDaoData.getTotalOfAll());
 
         engine.process("cart/cart.html", context, resp.getWriter());
+    }
+
+    @Override
+    protected void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException {
+        ProductDao productDao = ProductDaoMem.getInstance();
+
+        String removeProduct = request.getParameter("remove");
+        String addProduct = request.getParameter("add");
+
+        if (removeProduct != null) {
+            cartDaoData.removeProduct(removeProduct);
+        }
+        if (addProduct != null) {
+            cartDaoData.addProduct(addProduct);
+        }
     }
 }

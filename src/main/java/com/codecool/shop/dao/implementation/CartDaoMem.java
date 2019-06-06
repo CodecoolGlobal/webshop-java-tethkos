@@ -40,12 +40,24 @@ public class CartDaoMem implements CartDao {
 
 
     @Override
-    public void addProduct(Product product) {
+    public CartDao addProduct(Product product) {
         if (cartData.containsKey(product)) {
             cartData.put(product, cartData.get(product) + 1);
         } else {
             cartData.put(product, 1);
         }
+        return null;
+    }
+
+    @Override
+    public CartDao removeProduct(Product product) {
+        if (cartData.get(product) >= 1) {
+            cartData.put(product, cartData.get(product) - 1);
+        }
+        else {
+            cartData.remove(product);
+        }
+        return null;
     }
 
     @Override
