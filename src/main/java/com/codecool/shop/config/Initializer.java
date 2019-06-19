@@ -15,9 +15,12 @@ import com.codecool.shop.model.Supplier;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.util.ArrayList;
+
 
 @WebListener
 public class Initializer implements ServletContextListener {
+
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -27,7 +30,7 @@ public class Initializer implements ServletContextListener {
         CartDao cartDaoData = CartDaoMem.getInstance();
 
         //setting up a new supplier
-        Supplier allSupplier = new Supplier("All Artists","All");
+        Supplier allSupplier = new Supplier("All Artists", "All");
         supplierDataStore.add(allSupplier);
         Supplier pony = new Supplier("Pony Wave", "When it comes to realistic tattoos, this artist is on a whole other level.");
         supplierDataStore.add(pony);
@@ -54,41 +57,102 @@ public class Initializer implements ServletContextListener {
         productCategoryDataStore.add(couple);
 
 
-
         //setting up products and printing it
 
-        productDataStore.add(new Product("Mr. Jackson", 5990, "HUF", "Get the King of Pop on you're body", famousPeople, pony));
-        productDataStore.add(new Product("Jordan", 2990, "HUF", "I you likes basketball get one", makeup, bang));
-        productDataStore.add(new Product("Regret", 1990, "HUF", "YOLO", calligraphic, johnny));
-        productDataStore.add(new Product("Love", 3990, "HUF", "for troubled personalities", calligraphic, ritkit));
-        productDataStore.add(new Product("Megan", 4990, "HUF", "For after breakups", calligraphic, ritkit));
-        productDataStore.add(new Product("Onion", 1990, "HUF", "For layered ones", calligraphic, bang));
-        productDataStore.add(new Product("MC Donald", 1990, "HUF", "For that one meal to remember", calligraphic, pony));
-        productDataStore.add(new Product("Live You're Life", 1990, "HUF", "YOLO 2", calligraphic, ritkit));
-        productDataStore.add(new Product("It's is your life", 1990, "HUF", "Get the famous song on your belly", calligraphic, ritkit));
-        productDataStore.add(new Product("Marilyn", 8990, "HUF", "What else to say", famousPeople, pony));
-        productDataStore.add(new Product("Toilet", 3990, "HUF", "You're favorite spot on the world", realistic, pony));
-        productDataStore.add(new Product("Twilight", 9990, "HUF", "Mr. Vampire himself on ouy", realistic, bang));
-        productDataStore.add(new Product("Family Portrait", 19990, "HUF", "First is Family", realistic, johnny));
-        productDataStore.add(new Product("Drake", 3590, "HUF", "For true fans", calligraphic, johnny));
-        productDataStore.add(new Product("Spiderman", 5430, "HUF", "With great tatoo comes great responsibility", realistic, bang));
-        productDataStore.add(new Product("Ninja turtle", 6600, "HUF", "Not only for teenagers", makeup, pony));
-        productDataStore.add(new Product("Great heart", 10000, "HUF", "Perfect engagement gift", couple,johnny));
-        productDataStore.add(new Product("WallMarkt", 6690, "HUF", "10% OFF", calligraphic,johnny));
-        productDataStore.add(new Product("South Park", 15440, "HUF", "You killed Kenny", calligraphic,johnny));
-        productDataStore.add(new Product("Monster", 3450, "HUF", "Show the ebast inside you", calligraphic,ritkit));
-        productDataStore.add(new Product("Smile", 6660, "HUF", "You can never be pretty enough", makeup,ritkit));
-        productDataStore.add(new Product("Russian standard", 6660, "HUF", "You can catch Igor with your look", makeup,pony));
-        productDataStore.add(new Product("Disco Queen", 9990, "HUF", "For the real gold diggers #partyneverstops", makeup,pony));
-        productDataStore.add(new Product("Natural look", 3490, "HUF", "For animal lovers", makeup,pony));
-        productDataStore.add(new Product("EKIN", 3490, "HUF", "Just do it!", makeup,bang));
-        productDataStore.add(new Product("Babyboi", 10000, "HUF", "Welcome to the family", makeup,bang));
-        productDataStore.add(new Product("Twins", 6500, "HUF", "One is never enough", makeup,bang));
-        productDataStore.add(new Product("Babygurl", 4500, "HUF", "Little princess", makeup,johnny));
-        productDataStore.add(new Product("Pink Foyld", 5690, "HUF", "Dark side of the art", makeup,johnny));
-        productDataStore.add(new Product("Mrs. Jolie", 7600, "HUF", "Tomb Raider on your skin", makeup,ritkit));
-        productDataStore.add(new Product("Hell of a Spite", 9000, "HUF", "F**k Coke", makeup,ritkit));
-        productDataStore.add(new Product("Perfect Match", 5690, "HUF", "Perfect Match", couple,ritkit));
+        sqlInitalizer sqlInitalizer = new sqlInitalizer();
+
+
+        for (int i = 0; i < sqlInitalizer.all().size(); i++) {
+
+
+            if ((sqlInitalizer.all().get(i).artist).equals("Pony Wave")) {
+
+                if (sqlInitalizer.all().get(i).category.equals("Famous people")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, famousPeople, pony));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("Makeup")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, makeup, pony));
+                }
+                if (sqlInitalizer.all().get(i).category.equals("Calligraphic")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, calligraphic, pony));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("Realistic")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, realistic, pony));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("For trve lovers")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, couple, pony));
+                }
+            }
+
+            if (sqlInitalizer.all().get(i).artist.equals("Bang Bang")) {
+                if (sqlInitalizer.all().get(i).category.equals("Famous people")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, famousPeople, bang));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("Makeup")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, makeup, bang));
+                }
+                if (sqlInitalizer.all().get(i).category.equals("Calligraphic")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, calligraphic, bang));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("Realistic")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, realistic, bang));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("For trve lovers")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, couple, bang));
+                }
+            }
+
+
+            if (sqlInitalizer.all().get(i).artist.equals("Little Johnny")) {
+                if (sqlInitalizer.all().get(i).category.equals("Famous people")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, famousPeople, johnny));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("Makeup")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, makeup, johnny));
+                }
+                if (sqlInitalizer.all().get(i).category.equals("Calligraphic")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, calligraphic, johnny));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("Realistic")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, realistic, johnny));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("For trve lovers")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, couple, johnny));
+                }
+            }
+
+            if (sqlInitalizer.all().get(i).artist.equals("Rit Kit Tattoo")) {
+                if (sqlInitalizer.all().get(i).category.equals("Famous people")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, famousPeople, ritkit));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("Makeup")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, makeup, ritkit));
+                }
+                if (sqlInitalizer.all().get(i).category.equals("Calligraphic")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, calligraphic, ritkit));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("Realistic")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, realistic, ritkit));
+                }
+
+                if (sqlInitalizer.all().get(i).category.equals("For trve lovers")) {
+                    productDataStore.add(new Product(sqlInitalizer.all().get(i).name, Float.parseFloat(sqlInitalizer.all().get(i).defaultPrice), sqlInitalizer.all().get(i).currencystring, sqlInitalizer.all().get(i).description, couple, ritkit));
+                }
+            }
+
+
+        }
 
 
     }
