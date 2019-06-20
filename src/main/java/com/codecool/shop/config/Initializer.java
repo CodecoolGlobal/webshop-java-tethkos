@@ -15,7 +15,6 @@ import com.codecool.shop.model.Supplier;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.util.ArrayList;
 
 
 @WebListener
@@ -59,7 +58,7 @@ public class Initializer implements ServletContextListener {
 
         //setting up products and printing it
 
-        sqlInitalizer sqlInitalizer = new sqlInitalizer();
+        SqlInitalizer sqlInitalizer = new SqlInitalizer();
 
 
         for (int i = 0; i < sqlInitalizer.all().size(); i++) {
