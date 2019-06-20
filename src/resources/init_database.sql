@@ -45,17 +45,17 @@ INSERT INTO product (id, name, default_price, currency_string, description, prod
 INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (7, 'Mc Donald', 1990, 'HUF', 'For that one meal to remember', 'Calligraphic', 'Pony Wave');
 INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (8, 'Live Youre life', 1990, 'HUF', 'YOLO 2', 'Calligraphic', 'Rit Kit Tattoo');
 INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (9, 'Its is your life', 1990, 'HUF', 'Get the famous song on your belly', 'Calligraphic', 'Rit Kit Tattoo');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (10, 'Marilyn', 8990, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (11, 'Toilet', 3990, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (12, 'Twilight', 9990, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (13, 'Family Potrait', 19990, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (14, 'Drake', 3490, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (15, 'Spiderman', 5430, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (16, 'Ninja Turtle', 6600, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (17, 'Great Heart', 10000, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (18, 'WallMarkt', 6690, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (19, 'South Park', 15440, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
-INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (20, 'Monster', 3450, 'HUF', 'Get the King of Pop on youre body', 'Famous People', 'Pony Wave');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (10, 'Marilyn', 8990, 'HUF', 'What else to say', 'Realistic', 'Pony Wave');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (11, 'Toilet', 3990, 'HUF', 'Youre favorite spot on the world', 'Realistic', 'Pony Wave');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (12, 'Twilight', 9990, 'HUF', 'Mr. Vampire himself on ouy', 'Realistic', 'Bang Bang');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (13, 'Family Potrait', 19990, 'HUF', 'First is Family', 'Realistic', 'Little Johnny');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (14, 'Drake', 3490, 'HUF', 'For true fans', 'Calligraphic', 'Little Johnny');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (15, 'Spiderman', 5430, 'HUF', 'With great tatoo comes great responsibility', 'Realistic', 'Bang Bang');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (16, 'Ninja Turtle', 6600, 'HUF', 'Not only for teenagers', 'Makeup', 'Pony Wave');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (17, 'Great Heart', 10000, 'HUF', 'Perfect engagement gift', 'For Trve Lovers', 'Little Johnny');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (18, 'WallMarkt', 6690, 'HUF', '10% OFF', 'Calligraphic', 'Little Johnny');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (19, 'South Park', 15440, 'HUF', 'You killed Kenny', 'Calligraphic', 'Rit Kit Tattoo');
+INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (20, 'Monster', 3450, 'HUF', 'Show the ebast inside you', 'Calligraphic', 'Pony Wave');
 INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (21, 'Smile', 6660, 'HUF', 'You can never be pretty enough', 'Makeup', 'Rit Kit Tattoo');
 INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (22, 'Russian Standard', 6660, 'HUF', 'You can catch Igor with your look', 'Makeup', 'Pony Wave');
 INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (24, 'Disco Queen', 9990, 'HUF', 'For the real gold diggers #partyneverstops', 'Makeup', 'Pony Wave');
@@ -67,3 +67,4 @@ INSERT INTO product (id, name, default_price, currency_string, description, prod
 INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (29, 'Pink Foyld', 5690, 'HUF', 'Dark side of the art', 'Makeup', 'Little Johnny');
 INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (30, 'Mrs. Jolie', 5690, 'HUF', 'Tomb Raider on your skin', 'Makeup', 'Rit Kit Tattoo');
 INSERT INTO product (id, name, default_price, currency_string, description, product_category, artist) VALUES (31, 'Hell of a Spite', 5690, 'HUF', 'F**k Coke', 'Makeup', 'Rit Kit Tattoo');
+

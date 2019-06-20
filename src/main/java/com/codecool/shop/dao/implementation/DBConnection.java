@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
+
     private static final String DB_USER = System.getenv("DB_USER");
     private static final String DB_NAME = System.getenv("DB_NAME");
     private static final String DB_HOST = System.getenv("DB_HOST");
