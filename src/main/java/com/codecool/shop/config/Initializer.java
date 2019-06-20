@@ -35,7 +35,7 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(bang);
         Supplier johnny = new Supplier("Little Johnny", "The Terezcity-based artist specializes in highly intricate black-and-white tattoos with a lot of contrast.");
         supplierDataStore.add(johnny);
-        Supplier ritkit = new Supplier("Rit Kit Tattoo", "She achieves her “live leaf tattoos” by using ink to first stamp the outline ");
+            Supplier ritkit = new Supplier("Rit Kit Tattoo", "She achieves her “live leaf tattoos” by using ink to first stamp the outline ");
         supplierDataStore.add(ritkit);
 
 
